@@ -1,41 +1,31 @@
-#include <stdio.h>
+#include "sort.h"
 
-void swap(int *xp, int *yp)
+/**
+ * bubble_sort - function that sorts an array
+ * of integers in ascending order using the
+ * Bubble sort algorithm
+ * @array: input arrray
+ * @size: size of the array
+ * Return: no return
+ */
+void bubble_sort(int *array, size_t size)
 {
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
-}
+	size_t i, n;
+	int tmp, swap;
 
-// A function to implement bubble sort
-//void bubbleSort(int arr[], int n) 
-void bubble_sort(int *array, size_t size);
-{
-    int i, j;
-    for (i = 0; i < n - 1; i++)
-
-        // Last i elements are already in place
-        for (j = 0; j < n - i - 1; j++)
-            if (arr[j] > arr[j + 1])
-                swap(&arr[j], &arr[j + 1]);
-}
-
-/* Function to print an array */
-void printArray(int arr[], int size)
-{
-    int i;
-    for (i = 0; i < size; i++)
-        printf("%d ", arr[i]);
-    printf("\n");
-}
-
-// Driver program to test above functions
-int main()
-{
-    int arr[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    bubbleSort(arr, n);
-    printf("Sorted array: \n");
-    printArray(arr, n);
-    return 0;
+	for (n = size, swap = 1; n > 0 && swap; n--)
+	{
+		swap = 0;
+		for (i = 0; (i + 1) < n; i++)
+		{
+			if (array[i] > array[i + 1])
+			{
+				tmp = array[i + 1];
+				array[i + 1] = array[i];
+				array[i] = tmp;
+				print_array(array, size);
+				swap = 1;
+			}
+		}
+	}
 }
